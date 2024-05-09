@@ -103,6 +103,6 @@ let prices = {
     alert("Prices updated successfully!"); // Display success message
   
     // Redirect to calculator.html
-    window.location.href = "calculator.html";
+    window.location.href = "index.html";
   }
   

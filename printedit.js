@@ -95,5 +95,5 @@ prices.printingSide.frontback = parseFloat(document.getElementById("Front Back")
 
 alert("Prices updated successfully!"); // Display success message
 
-window.location.href = "calculator.html";
+window.location.href = "index.html";
 }
