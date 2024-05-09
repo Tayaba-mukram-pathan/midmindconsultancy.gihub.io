@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Binding Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: inline-block;
+            /* Display form groups inline */
+            width: 45%;
+            /* Set width for each form group */
+        }
+
+        input[type="number"] {
+            width: calc(100% - 10px);
+            /* Adjusted width to take up full width of form group */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Media Queries */
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .form-group {
+                width: 100%;
+                /* Full width for smaller screens */
+                display: block;
+                /* Display form groups in block for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Edit Purchase Details</h2>
+        <hr>
+        <form id="editpurchaseForm">
+            <h4>Sheet</h4>
+            <div class="form-group">
+                <input type="number" id="Belt-1" placeholder=" 12*18 ">
+            </div>
+            <div class="form-group">
+                <input type="number" id="Belt-2" placeholder="23*36 ">
+            </div>
+            <div class="form-group">
+                <input type="number" id="Belt-3" placeholder="18*23 ">
+            </div>
+            <div class="form-group">
+                <input type="number" id="Belt-4" placeholder="20*30 ">
+            </div>
+            <div class="form-group">
+                <input type="number" id="Belt-5" placeholder="17*27">
+            </div>
+            <div class="form-group">
+                <input type="number" id="Belt-6" placeholder="19*25">
+            </div>
+            <hr>
+            <h4>Paper GSM</h4>
+            <div class="form-group">
+                <input type="number" id="ghadi-1" placeholder="Non">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-2" placeholder="GVG">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-3" placeholder="60">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-4" placeholder="70">
+            </div>
+            <div class="form-group">
+                <input type="number" id="dabba-5" placeholder=" 80">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-6" placeholder="90">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-7" placeholder="100">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-8" placeholder="130">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-9" placeholder="170">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-10" placeholder="250">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ghadi-11" placeholder="350">
+            </div>
+            <hr>
+            <h4> Paper Type</h4>
+            <div class="form-group">
+                <input type="number" id="jhadu-1" placeholder="Art">
+            </div>
+            <div class="form-group">
+                <input type="number" id="jhadu-2" placeholder="Map">
+            </div>
+            <div class="form-group">
+                <input type="number" id="jhadu-3" placeholder="Card">
+            </div>
+            <div class="form-group">
+                <input type="number" id="jhadu-4" placeholder="Sticker">
+            </div>
+            <hr>
+           
+            <button type="button" onclick="updatePrices()">Update Prices</button>
+        </form>
+    </div>
+    <script>
+        // Price configuration
+        let prices = {
+            sheet: {
+                "12*18": 1,
+                "23*36": 4,
+                "18*23": 2.5,
+                "17*27": 3,
+                "20*30": 4,
+                "19*25": 5
+            },
+            paperGsm: {
+                Non: 0,
+                GVG: 1,
+                "60": 3,
+                "70": 2,
+                "80": 3.5,
+                "90": 4,
+                "100": 4.5,
+                "130": 5,
+                "170": 5,
+                "250": 7,
+                "350": 8
+            },
+            type: {
+                Art: 1,
+                Map: 2,
+                Card: 3,
+                Sticker: 4
+            }
+        };
+        
+        // Function to update prices based on form input and redirect
+        function updatePrices() {
+            // Update sheet prices
+            prices.sheet["12*18"] = parseFloat(document.getElementById("Belt-1").value);
+            prices.sheet["23*36"] = parseFloat(document.getElementById("Belt-2").value);
+            prices.sheet["18*23"] = parseFloat(document.getElementById("Belt-3").value);
+            prices.sheet["20*30"] = parseFloat(document.getElementById("Belt-4").value);
+            prices.sheet["17*27"] = parseFloat(document.getElementById("Belt-5").value);
+            prices.sheet["19*25"] = parseFloat(document.getElementById("Belt-6").value);
+        
+            // Update paper GSM prices
+            prices.paperGsm.Non = parseFloat(document.getElementById("ghadi-1").value);
+            prices.paperGsm.GVG = parseFloat(document.getElementById("ghadi-2").value);
+            prices.paperGsm["60"] = parseFloat(document.getElementById("ghadi-3").value);
+            prices.paperGsm["70"] = parseFloat(document.getElementById("ghadi-4").value);
+            prices.paperGsm["80"] = parseFloat(document.getElementById("dabba-5").value);
+            prices.paperGsm["90"] = parseFloat(document.getElementById("ghadi-6").value);
+            prices.paperGsm["100"] = parseFloat(document.getElementById("ghadi-7").value);
+            prices.paperGsm["130"] = parseFloat(document.getElementById("ghadi-8").value);
+            prices.paperGsm["170"] = parseFloat(document.getElementById("ghadi-9").value);
+            prices.paperGsm["250"] = parseFloat(document.getElementById("ghadi-10").value);
+            prices.paperGsm["350"] = parseFloat(document.getElementById("ghadi-11").value);
+        
+            // Update paper type prices
+            prices.type.Art = parseFloat(document.getElementById("jhadu-1").value);
+            prices.type.Map = parseFloat(document.getElementById("jhadu-2").value);
+            prices.type.Card = parseFloat(document.getElementById("jhadu-3").value);
+            prices.type.Sticker = parseFloat(document.getElementById("jhadu-4").value);
+        
+            alert("Prices updated successfully!"); // Display success message
+        
+            try {
+                console.log("Redirecting..."); // Log the redirection attempt
+                window.location.href = "Calculator.html"; // Redirect to calculator.html after prices are updated
+            } catch (error) {
+                console.error("Error redirecting:", error); // Log any errors that occur during redirection
+            }
+        }
+    </script>
+    
+    
+</body>
+
+</html>

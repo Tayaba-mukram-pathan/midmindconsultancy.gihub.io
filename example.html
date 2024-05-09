@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>Printing Details</h2>
+  <hr>
+  <form class="form-inline" id="printingForm">
+    <!-- Printing details inputs... -->
+  </form>
+  <div id="printingTotal"></div>
+  <hr>
+
+  <h2>Ruff Details</h2>
+  <hr>
+  <form class="form-inline" id="ruffForm">
+    <!-- Ruff details inputs... -->
+  </form>
+  <div id="ruffTotal"></div>
+  <hr>
+
+  <h2>Binding Details</h2>
+  <hr>
+  <form class="form-inline" id="bindingForm">
+    <!-- Binding details inputs... -->
+  </form>
+  <div id="bindingTotal"></div>
+  <hr>
+
+  <h2>Paper Purchasing Details</h2>
+  <hr>
+  <form class="form-inline" id="purchaseForm">
+    <!-- Purchase details inputs... -->
+  </form>
+  <div id="purchaseTotal"></div>
+  <hr>
+
+  <h2>Grand Total</h2>
+  <div id="grandTotal"></div>
+
+  <script>
+     function calculatePrintingTotal() {
+      // Calculation logic for printing total...
+    }
+
+    function calculateRuffTotal() {
+      // Calculation logic for ruff total...
+    }
+
+    function calculateBindingTotal() {
+      // Calculation logic for binding total...
+    }
+
+    function calculatePurchaseTotal() {
+      // Calculation logic for purchase total...
+    }
+
+    function calculateGrandTotal() {
+      let grandTotal = 0;
+      
+      // Check if printing details are added
+      if (document.getElementById("printingForm")) {
+        const printingTotal = parseFloat(document.getElementById("printingTotal").innerText.split('$')[1]);
+        grandTotal += printingTotal;
+      }
+      
+      // Check if ruff details are added
+      if (document.getElementById("ruffForm")) {
+        const ruffTotal = parseFloat(document.getElementById("ruffTotal").innerText.split('$')[1]);
+        grandTotal += ruffTotal;
+      }
+      
+      // Check if binding details are added
+      if (document.getElementById("bindingForm")) {
+        const bindingTotal = parseFloat(document.getElementById("bindingTotal").innerText.split('$')[1]);
+        grandTotal += bindingTotal;
+      }
+      
+      // Check if purchase details are added
+      if (document.getElementById("purchaseForm")) {
+        const purchaseTotal = parseFloat(document.getElementById("purchaseTotal").innerText.split('$')[1]);
+        grandTotal += purchaseTotal;
+      }
+
+      document.getElementById("grandTotal").innerHTML = "Grand Total: $" + grandTotal.toFixed(2);
+    }
+  </script>
+</body>
+
+</html>

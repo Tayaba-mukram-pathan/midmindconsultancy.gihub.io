@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Printing Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: inline-block;
+      /* Display form groups inline */
+      width: 45%;
+      /* Set width for each form group */
+    }
+
+    input[type="number"] {
+      width: calc(100% - 10px);
+      /* Adjusted width to take up full width of form group */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+     .btn-ruff{
+      width: 20%;
+     }
+     .btn-printing{
+      width: 20%;
+     }
+     .btn-grand{
+      width: 20%;
+    
+     }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Media Queries */
+    @media only screen and (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      .form-group {
+        width: 100%;
+        /* Full width for smaller screens */
+        display: block;
+        /* Display form groups in block for smaller screens */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Ruff Printing Details</h2>
+    <hr>
+    <h4>Ruff Paper</h4>
+    <div class="form-group">
+      <input type="number" id="Duplicate" placeholder="Duplicate">
+    </div>
+    <div class="form-group">
+      <input type="number" id="Triplicate" placeholder="Triplicate">
+    </div>
+    <hr>
+    <h4>Size</h4>
+    <form id="editPrintingForm">
+      <div class="form-group">
+        <input type="number" id="fullsheetPrice" placeholder="Full Sheet">
+      </div>
+      <div class="form-group">
+        <input type="number" id="A2Price" placeholder=" A2 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="A4Price" placeholder=" A4 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="A5Price" placeholder=" A5 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="A8Price" placeholder=" A8 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="A16Price" placeholder=" A16 ">
+      </div>
+      <hr>
+      <h4>Sheet</h4>
+      <div class="form-group">
+        <input type="number" id="12*18" placeholder=" 12*18 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="23*36" placeholder="23*36 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="18*23e" placeholder="18*23 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="20*30" placeholder="20*30 ">
+      </div>
+      <div class="form-group">
+        <input type="number" id="17*27" placeholder="17*27">
+      </div>
+      <div class="form-group">
+        <input type="number" id="19*25" placeholder="19*25">
+      </div>
+      <hr>
+      <h4>Paper GSM</h4>
+      <div class="form-group">
+        <input type="number" id="Non" placeholder="Non">
+      </div>
+      <div class="form-group">
+        <input type="number" id="GVG" placeholder="GVG">
+      </div>
+      <div class="form-group">
+        <input type="number" id="60" placeholder="60">
+      </div>
+      <div class="form-group">
+        <input type="number" id="70" placeholder="70">
+      </div>
+      <div class="form-group">
+        <input type="number" id="80" placeholder=" 80">
+      </div>
+      <div class="form-group">
+        <input type="number" id="90" placeholder="90">
+      </div>
+      <div class="form-group">
+        <input type="number" id="100" placeholder="100">
+      </div>
+      <div class="form-group">
+        <input type="number" id="130" placeholder="130">
+      </div>
+      <div class="form-group">
+        <input type="number" id="170" placeholder="170">
+      </div>
+      <div class="form-group">
+        <input type="number" id="250" placeholder="250">
+      </div>
+      <div class="form-group">
+        <input type="number" id="300" placeholder="350">
+      </div>
+      <hr>
+      <h4>Color</h4>
+      <div class="form-group">
+        <input type="number" id="Single Color" placeholder="Enter Single Color Price">
+      </div>
+      <div class="form-group">
+        <input type="number" id="Four Color" placeholder="Enter Four Color Price">
+      </div>
+    </form>
+    <hr>
+    <button type="button" onclick="updatePrices()">Update Prices</button>
+    <div id="total"></div>
+    
+
+    <script src="ruffedit.js"></script>
+</body>
+
+</html>
