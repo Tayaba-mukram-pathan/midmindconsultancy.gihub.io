@@ -422,95 +422,145 @@ button:hover {
   
 
   <script>
-    function calculatePrintingTotal() {
-      const size = document.getElementById("printSize").value;
-      const sheet = document.getElementById("printSheet").value;
-      const gsm = document.getElementById("printGsm").value;
-      const type = document.getElementById("printType").value;
-      const color = document.getElementById("printColor").value;
-      const side = document.getElementById("printSide").value;
-      const quantity = parseInt(document.getElementById("printQuantity").value);
+  function calculatePrintingTotal() {
+    const size = document.getElementById("printSize").value;
+    const sheet = document.getElementById("printSheet").value;
+    const gsm = document.getElementById("printGsm").value;
+    const type = document.getElementById("printType").value;
+    const color = document.getElementById("printColor").value;
+    const side = document.getElementById("printSide").value;
+    const quantity = parseInt(document.getElementById("printQuantity").value);
 
-      // Calculation logic for printing total (replace with actual logic)
-      const printingTotal = quantity * 10; // Example calculation
+    // Calculation logic for printing total
+    const printingTotal = quantity * 10; // Example calculation
 
-      document.getElementById("printingTotal").innerHTML = "Printing Total: $" + printingTotal.toFixed(2);
+    document.getElementById("printingTotal").innerText = "Printing Total: ₹" + printingTotal.toFixed(2);
 
-      // Calculate grand total after updating printing total
-      calculateGrandTotal();
+    // Calculate grand total after updating printing total
+    calculateGrandTotal();
+  }
+
+  function calculateRuffTotal() {
+    const paper = document.getElementById("ruffPaper").value;
+    const size = document.getElementById("ruffSize").value;
+    const sheet = document.getElementById("ruffSheet").value;
+    const gsm = document.getElementById("ruffGsm").value;
+    const type = document.getElementById("ruffType").value;
+    const color = document.getElementById("ruffColor").value;
+    const side = document.getElementById("ruffSide").value;
+    const quantity = parseInt(document.getElementById("ruffQuantity").value);
+
+    // Calculation logic for ruff total
+    const ruffTotal = quantity * 8; // Example calculation
+
+    document.getElementById("ruffTotal").innerText = "Ruff Total: ₹" + ruffTotal.toFixed(2);
+
+    // Calculate grand total after updating ruff total
+    calculateGrandTotal();
+  }
+
+  function calculateBindingTotal() {
+    const size = document.getElementById("bindingSize").value;
+    const sheet = document.getElementById("bindingSheet").value;
+    const type = document.getElementById("bindingType").value;
+    const gsm = document.getElementById("bindingGsm").value;
+    const bindingType = document.getElementById("bindingBindingType").value;
+    const ruff = document.getElementById("bindingRuff").value;
+    const quantity = parseInt(document.getElementById("bindingQuantity").value);
+
+    // Calculation logic for binding total
+    const bindingTotal = quantity * 5; // Example calculation
+
+    document.getElementById("bindingTotal").innerText = "Binding Total: ₹" + bindingTotal.toFixed(2);
+
+    // Calculate grand total after updating binding total
+    calculateGrandTotal();
+  }
+
+  function calculatePurchaseTotal() {
+    const sheet = document.getElementById("purchaseSheet").value;
+    const gsm = document.getElementById("purchaseGsm").value;
+    const type = document.getElementById("purchaseType").value;
+    const quantity = parseInt(document.getElementById("purchaseQuantity").value);
+    const amount = parseFloat(document.getElementById("purchaseAmount").value);
+
+    // Calculation logic for purchase total
+    const purchaseTotal = quantity * amount; // Example calculation
+
+    document.getElementById("purchaseTotal").innerText = "Purchase Total: ₹" + purchaseTotal.toFixed(2);
+
+    // Calculate grand total after updating purchase total
+    calculateGrandTotal();
+  }
+
+  function calculateGrandTotal() {
+    let printingTotal = 0;
+    let ruffTotal = 0;
+    let bindingTotal = 0;
+    let purchaseTotal = 0;
+
+    // Check if printing total is available
+    const printingTotalElement = document.getElementById("printingTotal");
+    if (printingTotalElement) {
+      printingTotal = parseFloat(printingTotalElement.innerText.split('₹')[1]) || 0;
     }
 
-    function calculateRuffTotal() {
-      const paper = document.getElementById("ruffPaper").value;
-      const size = document.getElementById("ruffSize").value;
-      const sheet = document.getElementById("ruffSheet").value;
-      const gsm = document.getElementById("ruffGsm").value;
-      const type = document.getElementById("ruffType").value;
-      const color = document.getElementById("ruffColor").value;
-      const side = document.getElementById("ruffSide").value;
-      const quantity = parseInt(document.getElementById("ruffQuantity").value);
-
-      // Calculation logic for ruff total (replace with actual logic)
-      const ruffTotal = quantity * 8; // Example calculation
-
-      document.getElementById("ruffTotal").innerHTML = "Ruff Total: $" + ruffTotal.toFixed(2);
-
-      // Calculate grand total after updating ruff total
-      calculateGrandTotal();
+    // Check if ruff total is available
+    const ruffTotalElement = document.getElementById("ruffTotal");
+    if (ruffTotalElement) {
+      ruffTotal = parseFloat(ruffTotalElement.innerText.split('₹')[1]) || 0;
     }
 
-    function calculateBindingTotal() {
-      const size = document.getElementById("bindingSize").value;
-      const sheet = document.getElementById("bindingSheet").value;
-      const type = document.getElementById("bindingType").value;
-      const gsm = document.getElementById("bindingGsm").value;
-      const bindingType = document.getElementById("bindingBindingType").value;
-      const ruff = document.getElementById("bindingRuff").value;
-      const quantity = parseInt(document.getElementById("bindingQuantity").value);
-
-      // Calculation logic for binding total (replace with actual logic)
-      const bindingTotal = quantity * 5; // Example calculation
-
-      document.getElementById("bindingTotal").innerHTML = "Binding Total: $" + bindingTotal.toFixed(2);
-
-      // Calculate grand total after updating binding total
-      calculateGrandTotal();
+    // Check if binding total is available
+    const bindingTotalElement = document.getElementById("bindingTotal");
+    if (bindingTotalElement) {
+      bindingTotal = parseFloat(bindingTotalElement.innerText.split('₹')[1]) || 0;
     }
 
-    function calculatePurchaseTotal() {
-      const sheet = document.getElementById("purchaseSheet").value;
-      const gsm = document.getElementById("purchaseGsm").value;
-      const type = document.getElementById("purchaseType").value;
-      const quantity = parseInt(document.getElementById("purchaseQuantity").value);
-      const amount = parseFloat(document.getElementById("purchaseAmount").value);
-
-      // Calculation logic for purchase total (replace with actual logic)
-      const purchaseTotal = quantity * amount; // Example calculation
-
-      document.getElementById("purchaseTotal").innerHTML = "Purchase Total: $" + purchaseTotal.toFixed(2);
-
-      // Calculate grand total after updating purchase total
-      calculateGrandTotal();
+    // Check if purchase total is available
+    const purchaseTotalElement = document.getElementById("purchaseTotal");
+    if (purchaseTotalElement) {
+      purchaseTotal = parseFloat(purchaseTotalElement.innerText.split('₹')[1]) || 0;
     }
 
-    function calculateGrandTotal() {
-      const printingTotal = parseFloat(document.getElementById("printingTotal").innerText.split('$')[1]) || 0;
-      const ruffTotal = parseFloat(document.getElementById("ruffTotal").innerText.split('$')[1]) || 0;
-      const bindingTotal = parseFloat(document.getElementById("bindingTotal").innerText.split('$')[1]) || 0;
-      const purchaseTotal = parseFloat(document.getElementById("purchaseTotal").innerText.split('$')[1]) || 0;
+    // Calculate grand total
+    const grandTotal = printingTotal + ruffTotal + bindingTotal + purchaseTotal;
 
-      const grandTotal = printingTotal + ruffTotal + bindingTotal + purchaseTotal;
+    document.getElementById("grandTotal").innerText = "Grand Total: ₹" + grandTotal.toFixed(2);
+  }
 
-      document.getElementById("grandTotal").innerHTML = "Grand Total: $" + grandTotal.toFixed(2);
+  function calculateGreatGrandTotal() {
+    let greatGrandTotal = 0;
+
+    // Check if printing grand total is available
+    const printingGrandTotalElement = document.getElementById("printingGrandTotal");
+    if (printingGrandTotalElement) {
+      greatGrandTotal += parseFloat(printingGrandTotalElement.innerText.split('₹')[1]) || 0;
     }
 
-    function calculateGreatGrandTotal() {
-      const grandTotal = parseFloat(document.getElementById("grandTotal").innerText.split('$')[1]) || 0;
-      const greatGrandTotal = grandTotal * 2; // Example calculation
-
-      document.getElementById("grandTotal").innerHTML = "Great Grand Total: $" + greatGrandTotal.toFixed(2);
+    // Check if ruff grand total is available
+    const ruffGrandTotalElement = document.getElementById("ruffGrandTotal");
+    if (ruffGrandTotalElement) {
+      greatGrandTotal += parseFloat(ruffGrandTotalElement.innerText.split('₹')[1]) || 0;
     }
-  </script>
+
+    // Check if binding grand total is available
+    const bindingGrandTotalElement = document.getElementById("bindingGrandTotal");
+    if (bindingGrandTotalElement) {
+      greatGrandTotal += parseFloat(bindingGrandTotalElement.innerText.split('₹')[1]) || 0;
+    }
+
+    // Check if purchase grand total is available
+    const purchaseGrandTotalElement = document.getElementById("purchaseGrandTotal");
+    if (purchaseGrandTotalElement) {
+      greatGrandTotal += parseFloat(purchaseGrandTotalElement.innerText.split('₹')[1]) || 0;
+    }
+
+    document.getElementById("greatGrandTotal").innerText = "Great Grand Total: ₹" + greatGrandTotal.toFixed(2);
+  }
+</script>
+
+
 </body>
 
 </html>
